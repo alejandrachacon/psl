@@ -17,11 +17,14 @@ import org.junit.runners.Suite;
  * @author Ale
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({psl.LCDTesterTest.class, psl.NumeroLCDTest.class, psl.ImpresorLCDTest.class})
+@Suite.SuiteClasses({
+    psl.NumeroLCDTest.class,
+    psl.ImpresorLCDTest.class})
 public class PslSuite {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        
     }
 
     @AfterClass

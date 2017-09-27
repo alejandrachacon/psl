@@ -18,11 +18,12 @@ import static org.junit.Assert.*;
  */
 public class NumeroLCDTest {
     
-    public NumeroLCDTest() {
-    }
+    private final NumeroLCD num;
+    
     
     @BeforeClass
     public static void setUpClass() {
+       this.num = new NumeroLCD();
     }
     
     @AfterClass
@@ -31,6 +32,7 @@ public class NumeroLCDTest {
     
     @Before
     public void setUp() {
+        
     }
     
     @After

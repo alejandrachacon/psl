@@ -11,20 +11,22 @@ package psl;
  */
 public class NumeroLCD {
     
-    private final int[] pf1;
-    private final int[] pf2;
-    private final int[] pf3;
-    private final int[] pf4;
-    private final int[] pf5;
+    private final boolean[] num;
+    private final int[] pos;
+    private int size;
     
-      public NumeroLCD() {
+      public NumeroLCD(int size) {
         // Inicializa variables
-        this.pf1 = new int[2];
-        this.pf2 = new int[2];
-        this.pf3 = new int[2];
-        this.pf4 = new int[2];
-        this.pf5 = new int[2];
-    }
+        num = new boolean[7];
+        pos = new int[3];
+        pos[0] = 0;
+        pos[1] = size/2;
+        pos[2] = size;
+        this.size = size;
+        
+      }
+      
+    
       
     
 }

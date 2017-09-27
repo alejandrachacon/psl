@@ -7,11 +7,11 @@ import java.util.List;
 public class ImpresorLCD {
 
     // Puntos fijos
-    private final int[] pf1;
+/*    private final int[] pf1;
     private final int[] pf2;
     private final int[] pf3;
     private final int[] pf4;
-    private final int[] pf5;
+    private final int[] pf5;*/
     private String[][] matrizImpr;
 
     static final String CARACTER_VERTICAL = "|";
@@ -29,62 +29,15 @@ public class ImpresorLCD {
     private int totalFilas;
     private int totalColum;
 
-    public String[][] getMatrizImpr() {
-        return matrizImpr;
-    }
 
-    public void setMatrizImpr(String[][] matrizImpr) {
-        this.matrizImpr = matrizImpr;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public int getFilasDig() {
-        return filasDig;
-    }
-
-    public void setFilasDig(int filasDig) {
-        this.filasDig = filasDig;
-    }
-
-    public int getColumDig() {
-        return columDig;
-    }
-
-    public void setColumDig(int columDig) {
-        this.columDig = columDig;
-    }
-
-    public int getTotalFilas() {
-        return totalFilas;
-    }
-
-    public void setTotalFilas(int totalFilas) {
-        this.totalFilas = totalFilas;
-    }
-
-    public int getTotalColum() {
-        return totalColum;
-    }
-
-    public void setTotalColum(int totalColum) {
-        this.totalColum = totalColum;
-    }
-
-    public ImpresorLCD() {
+   /* public ImpresorLCD() {
         // Inicializa variables
         this.pf1 = new int[2];
         this.pf2 = new int[2];
         this.pf3 = new int[2];
         this.pf4 = new int[2];
         this.pf5 = new int[2];
-    }
+    }*/
 
     /**
      *
@@ -125,7 +78,7 @@ public class ImpresorLCD {
      * 
      */  
     private void adicionarSegmento(int segmento) {
-
+/*
         switch (segmento) {
             case 1:
                 adicionarLinea(this.matrizImpr, this.pf1, POSICION_Y,
@@ -157,7 +110,7 @@ public class ImpresorLCD {
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
     /**
@@ -306,7 +259,7 @@ public class ImpresorLCD {
             int numero = Integer.parseInt(String.valueOf(digito));
 
             //Calcula puntos fijos
-            this.pf1[0] = 0;
+        /*    this.pf1[0] = 0;
             this.pf1[1] = 0 + pivotX;
 
             this.pf2[0] = (this.filasDig / 2);
@@ -320,7 +273,7 @@ public class ImpresorLCD {
 
             this.pf5[0] = 0;
             this.pf5[1] = (this.columDig - 1) + pivotX;
-
+            */
             pivotX = pivotX + this.columDig + espacio;
 
             adicionarDigito(numero);
