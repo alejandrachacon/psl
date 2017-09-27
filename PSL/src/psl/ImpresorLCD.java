@@ -5,17 +5,15 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ImpresorLCD {
-    // TODO code application logic here
-    //String entrada = JOptionPane.showInputDialog("Digite el numero");
-    private int size;
-    // Calcula el numero de filasDig
-    private int filasDig;
-    private int columDig;
-    private int totalFilas;
-    private int totalColum;
+  
     private List<NumeroLCD> numeros;
     private NumeroLCD num;
+    private String[][] matrizImpr;
 
+    
+    public ImpresorLCD(){
+        numeros = new ArrayList<NumeroLCD>();
+    }
     /**
      *
      * Metodo encargado de definir los segmentos que componen un digito y
@@ -104,49 +102,66 @@ public class ImpresorLCD {
 
     /**
      *
-     * Metodo encargado de imprimir un numero
+     * Metodo encargado de crear los numeros en el formato de string
      *
      * @param size Tamaño Segmento Digitos
      * @param numeroImp Numero a Imprimir
      * @param espacio Espacio Entre digitos
      */    
-    private void imprimirNumero(int size, String numeroImp, int espacio) 
+    private void crearNumero(int size, String numeroImp, int espacio) 
     {
         char[] digitos;
-        
-
         // crea el arreglo de digitos
         digitos = numeroImp.toCharArray();
-
         // Calcula el numero de filas cada digito
         int filasDig = (2 * size) + 3;
         // Calcula el numero de columna de cada digito
         int columDig = size + 2;
+        // Calcula el total de columnas de la matriz en la que se almacenaran los digitos
+        int totalColum = (columDig * numeroImp.length())
+                + (espacio * numeroImp.length());
+
+        // crea matriz para almacenar los numero a imprimir
+        matrizImpr = new String[filasDig][totalColum];
+
         
         for (char digito : digitos) {
-       
-        num = new NumeroLCD(size,filasDig,columDig);
-
             
+            num = new NumeroLCD(size,filasDig,columDig);       
             //Valida que el caracter sea un digito
             if( ! Character.isDigit(digito))
             {
                 throw new IllegalArgumentException("Caracter " + digito
                     + " no es un digito");
             }
-
             int numero = Integer.parseInt(String.valueOf(digito));
-           
             adicionarDigito(numero);
-           
             num.crearNum();
-           
-            num.imprimir();
-          
-           
+            numeros.add(num);
+            imprimirNumero(espacio);
         }
 
        
+    }
+    
+    public void imprimirNumero(int espacio){
+      
+       
+        
+        for(int i = 0; i < numeros.get(0).getFilas(); i++){
+            
+           for(int j = 0; j < numeros.size(); j++){
+               
+               String [][] res = numeros.get(j).getNum();
+               
+                    for(int c = 0; c < numeros.get(j).getColumnas(); c++){
+                            System.out.print(res[i][c]);
+                    }
+           
+            }
+            System.out.println();
+        }
+        
     }
 
      /**
@@ -205,7 +220,7 @@ public class ImpresorLCD {
         }
 
         // Realiza la impresion del numero
-        imprimirNumero(tam, parametros[1],espacioDig);
+        crearNumero(tam, parametros[1],espacioDig);
 
     }
 
@@ -220,6 +235,7 @@ public class ImpresorLCD {
             Integer.parseInt(cadena);
             return true;
         } catch (NumberFormatException ex) {
+            System.out.println("Formato del número: "+ex.toString());
             return false;
         }
     }

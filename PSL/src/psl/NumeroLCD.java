@@ -20,7 +20,28 @@ public class NumeroLCD {
     private int filas;
     private int columnas;
     private String[][] num;
+
+    public int getFilas() {
+        return filas;
+    }
+
+    public void setFilas(int filas) {
+        this.filas = filas;
+    }
+
+    public int getColumnas() {
+        return columnas;
+    }
+
+    public void setColumnas(int columnas) {
+        this.columnas = columnas;
+    }
+     
+    public String[][] getNum() {
+        return num;
+    }
     
+   
       public NumeroLCD(int size, int filas, int columnas) {
         // Inicializa variables
         lineas = new boolean[tam];
