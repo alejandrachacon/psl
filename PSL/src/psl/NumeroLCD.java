@@ -48,7 +48,7 @@ public class NumeroLCD {
              
              if(lineas[i]){
                
-                 for(int j = 0; j< columnas; j++){
+                 for(int j = 1; j < columnas-1; j++){
                      if(i==3){
                          num[posF[1]][j]=hor;
                      }
@@ -60,10 +60,10 @@ public class NumeroLCD {
                          num[posF[2]][j]=hor;
                      }
                  }
-                 for(int j = 0; j< posF[1]-1; j++){
+                 for(int j = 1; j< posF[1]; j++){
                      
                      if(i == 0){
-                         num[j+1][posC[0]]=ver;
+                         num[j][posC[0]]=ver;
                      }
                      if(i == 2){
                          

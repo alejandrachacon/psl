@@ -13,6 +13,7 @@ public class ImpresorLCD {
     private int columDig;
     private int totalFilas;
     private int totalColum;
+    private List<NumeroLCD> numeros;
     private NumeroLCD num;
 
     /**
@@ -141,10 +142,7 @@ public class ImpresorLCD {
             num.crearNum();
            
             num.imprimir();
-            for(int i = 0; i<espacio; i++)
-            {
-                System.out.print(" ");
-            }
+          
            
         }
 
