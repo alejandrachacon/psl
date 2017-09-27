@@ -23,14 +23,12 @@ public class ImpresorLCDTest {
      * Test of procesar method, of class ImpresorLCD.
      */
     @Test
-    public void testProcesar() {
+    public void testProcesar() throws Exception {
         System.out.println("procesar");
-        String comando = "";
-        int espacioDig = 0;
+        String comando = "2,1";
+        int espacioDig = 1;
         ImpresorLCD instance = new ImpresorLCD();
         instance.procesar(comando, espacioDig);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -39,12 +37,10 @@ public class ImpresorLCDTest {
     @Test
     public void testIsNumeric() {
         System.out.println("isNumeric");
-        String cadena = "";
+        String cadena = "akl";
         boolean expResult = false;
         boolean result = ImpresorLCD.isNumeric(cadena);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

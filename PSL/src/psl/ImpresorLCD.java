@@ -6,9 +6,8 @@ import java.util.List;
 
 public class ImpresorLCD {
   
-    private List<NumeroLCD> numeros;
+    private final List<NumeroLCD> numeros;
     private NumeroLCD num;
-    private String[][] matrizImpr;
 
     
     public ImpresorLCD(){
@@ -121,8 +120,6 @@ public class ImpresorLCD {
         int totalColum = (columDig * numeroImp.length())
                 + (espacio * numeroImp.length());
 
-        // crea matriz para almacenar los numero a imprimir
-        matrizImpr = new String[filasDig][totalColum];
 
         
         for (char digito : digitos) {
@@ -151,14 +148,21 @@ public class ImpresorLCD {
      */
     public void imprimirNumero(int espacio){
       
+        //Se hace este for para ir concatenando más abajo todos los digitos que componen el número fila por fila
         for(int i = 0; i < numeros.get(0).getFilas(); i++){
             
+           //Aquí se va extrayendo la información de cada digito
            for(int j = 0; j < numeros.size(); j++){
                
                String [][] res = numeros.get(j).getNum();
                
+               //En este for se imprime la información de cada numero 
                     for(int c = 0; c < numeros.get(j).getColumnas(); c++){
                             System.out.print(res[i][c]);
+                    }
+               //Se concatena el espacio entre cada digito en este for
+                    for(int c = 0; c < espacio; c++){
+                            System.out.print(" ");
                     }
                     
             }
