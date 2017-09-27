@@ -10,16 +10,30 @@ import static java.lang.Math.ceil;
 /**
  *
  * @author Ale
+ * clase que representa un digito en LCD
+ * 
+ * 
  */
 public class NumeroLCD {
     
+    
+    //arreglo que representa las 7 lineas que se utilizan para dibujar cualquier número del 0 al 9
     private final boolean[] lineas;
+    //Se utiliza como constante para recorrer el arreglo anterior
     private final static int tam = 7;
-    private final int[] posC;
+    //PosC tiene las posiciones en donde se deben ubicar las lineas verticales, es decir 0 y column - 1
+    private final int[] posC;  
+    //PosC tiene las posiciones en donde se deben ubicar las lineas horizontales, es decir 0 y filas/2 y filas - 1
     private final int[] posF;
+    //numero de filas
     private int filas;
+    //numero de columnas
     private int columnas;
+    //Donde queda guardado el digito en el formato de strings 
     private String[][] num;
+    //caracteres para dibujar el digita
+    static final String hor = "-";
+    static final String ver = "|";
 
     public int getFilas() {
         return filas;
@@ -41,8 +55,12 @@ public class NumeroLCD {
         return num;
     }
     
-   
-      public NumeroLCD(int size, int filas, int columnas) {
+   /**
+     * Metodo constructor para la inicialización de la clase en la que se instancia el objeto
+     * @param filas filas que va a tener el numero en el formato
+     * @param columnas columnas que va a tener el numero en el formato
+     */
+      public NumeroLCD(int filas, int columnas) {
         // Inicializa variables
         lineas = new boolean[tam];
         posC = new int[2];
@@ -63,11 +81,11 @@ public class NumeroLCD {
           lineas[segmento-1] = true;          
       }
       public void crearNum() {
-          String hor = "-";
-          String ver = "|";
+          
          for(int i = 0; i < tam; i++){
              
              if(lineas[i]){
+                 
                
                  for(int j = 1; j < columnas-1; j++){
                      if(i==3){
@@ -120,7 +138,7 @@ public class NumeroLCD {
           }
       }
        
-       public void imprimir(){
+     public void imprimir(){
            
           for(int i = 0; i< filas; i++){
               for(int j = 0; j < columnas ; j++){

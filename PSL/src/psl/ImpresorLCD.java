@@ -16,7 +16,7 @@ public class ImpresorLCD {
     }
     /**
      *
-     * Metodo encargado de definir los segmentos que componen un digito y
+     * Metodo encargado de definir las lineas que componen un digito y
      * a partir de los segmentos adicionar la representacion del digito a la matriz
      *
      * @param numero Digito
@@ -108,7 +108,7 @@ public class ImpresorLCD {
      * @param numeroImp Numero a Imprimir
      * @param espacio Espacio Entre digitos
      */    
-    private void crearNumero(int size, String numeroImp, int espacio) 
+    private void crearNumero(int size, String numeroImp, int espacio) throws Exception
     {
         char[] digitos;
         // crea el arreglo de digitos
@@ -127,7 +127,8 @@ public class ImpresorLCD {
         
         for (char digito : digitos) {
             
-            num = new NumeroLCD(size,filasDig,columDig);       
+            num = new NumeroLCD(filasDig,columDig);   
+            
             //Valida que el caracter sea un digito
             if( ! Character.isDigit(digito))
             {
@@ -138,16 +139,18 @@ public class ImpresorLCD {
             adicionarDigito(numero);
             num.crearNum();
             numeros.add(num);
-            imprimirNumero(espacio);
         }
-
+        
+            imprimirNumero(espacio);
        
     }
     
+    /**
+     * Metodo para la impresión del número completo
+     * @param espacio espacio que se debe mantener entre un numero y otro
+     */
     public void imprimirNumero(int espacio){
       
-       
-        
         for(int i = 0; i < numeros.get(0).getFilas(); i++){
             
            for(int j = 0; j < numeros.size(); j++){
@@ -157,7 +160,7 @@ public class ImpresorLCD {
                     for(int c = 0; c < numeros.get(j).getColumnas(); c++){
                             System.out.print(res[i][c]);
                     }
-           
+                    
             }
             System.out.println();
         }
@@ -173,7 +176,7 @@ public class ImpresorLCD {
      * y el numero a imprimir
      * @param espacioDig Espacio Entre digitos
      */  
-    public void procesar(String comando, int espacioDig) {
+    public void procesar(String comando, int espacioDig) throws Exception {
         
         String[] parametros;
         
@@ -219,7 +222,7 @@ public class ImpresorLCD {
                     + "] no es un numero");
         }
 
-        // Realiza la impresion del numero
+        // Crea la matriz con el número completo
         crearNumero(tam, parametros[1],espacioDig);
 
     }

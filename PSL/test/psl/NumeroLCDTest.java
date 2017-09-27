@@ -23,11 +23,10 @@ public class NumeroLCDTest {
 
     @Test
     public void imprimirMethod() {
-        System.out.println("prueba imprimir");
+        System.out.println("prueba imprimir: ");
         num.adicionarLinea(1);
         num.adicionarLinea(5);
         
-        num.imprimir();
         assertTrue(true);
     }
     
