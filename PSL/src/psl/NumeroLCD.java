@@ -19,13 +19,13 @@ public class NumeroLCD {
     private int columnas;
     private String[][] num;
     
-      public NumeroLCD(int size) {
+      public NumeroLCD(int size, int filas, int columnas) {
         // Inicializa variables
         lineas = new boolean[tam];
         posC = new int[2];
         posF = new int[3];
-        filas = 2 * size + 3;
-        columnas = 2 + size;
+        this.filas = filas;
+        this.columnas =columnas;
         num = new String[filas][columnas];
         posC[0] = 0;
         posC[1] = columnas;
@@ -35,7 +35,7 @@ public class NumeroLCD {
       //  this.size = size;
         crearNum();
       }
-      public void addLinea(int segmento){
+      public void adicionarLinea(int segmento){
           lineas[segmento] = true;          
       }
       public void crearNum(){
