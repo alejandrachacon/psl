@@ -5,6 +5,8 @@
  */
 package psl;
 
+import static java.lang.Math.ceil;
+
 /**
  *
  * @author Ale
@@ -25,70 +27,85 @@ public class NumeroLCD {
         posC = new int[2];
         posF = new int[3];
         this.filas = filas;
-        this.columnas =columnas;
+        this.columnas = columnas;
         num = new String[filas][columnas];
         posC[0] = 0;
-        posC[1] = columnas;
+        posC[1] = columnas-1;
         posF[0] = 0;
-        posF[1] = filas/2;
-        posF[2] = filas;
+        posF[1] = (int) ceil(filas/2);
+        posF[2] = filas-1;
       //  this.size = size;
-        crearNum();
+        initNum();
       }
       public void adicionarLinea(int segmento){
-          lineas[segmento] = true;          
+         
+          lineas[segmento-1] = true;          
       }
-      public void crearNum(){
+      public void crearNum() {
           String hor = "-";
           String ver = "|";
          for(int i = 0; i < tam; i++){
              
              if(lineas[i]){
+               
                  for(int j = 0; j< columnas; j++){
-                     if(i==4){
+                     if(i==3){
                          num[posF[1]][j]=hor;
                      }
-                     if(i<4){
+                     if(i==1){
                          num[posF[0]][j]=hor;
-                     }else{
+                     }
+                     if(i==5)
+                     {
                          num[posF[2]][j]=hor;
                      }
                  }
-                 for(int j = 0; j< posF[1]; j++){
+                 for(int j = 0; j< posF[1]-1; j++){
                      
-                     if(i == 1){
-                         num[j][posC[0]]=ver;
+                     if(i == 0){
+                         num[j+1][posC[0]]=ver;
                      }
-                     if(i == 3){
+                     if(i == 2){
+                         
                          num[j][posC[1]]=ver;
                      }
                       
                  }
-                 num[posF[1]][posC[0]]=" ";
-                 num[posF[1]][posC[1]]=" ";
-                 
-                 for(int j = posF[1] +1 ; j<= filas; j++){
+              
+                 for(int j = posF[1] + 1 ; j< filas-1; j++){
                      
-                     if(i == 5){
+                     if(i == 4){
                          num[j][posC[0]]=ver;
                      }
-                     if(i == 7){
+                     if(i == 6){
+                         
                          num[j][posC[1]]=ver;
                      }
                       
                  }
                  
              }
-             
+            
          }
           
       }
-       
-       public void imprimir(){
+       public void initNum(){
+           
           for(int i = 0; i< filas; i++){
               for(int j = 0; j < columnas ; j++){
-                  System.out.println(num[i][j]);
+                  num[i][j]=" ";
               }
+              
+          }
+      }
+       
+       public void imprimir(){
+           
+          for(int i = 0; i< filas; i++){
+              for(int j = 0; j < columnas ; j++){
+                  System.out.print(num[i][j]);
+              }
+              System.out.println();
           }
       }
       

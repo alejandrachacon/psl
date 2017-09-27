@@ -24,7 +24,6 @@ public class ImpresorLCD {
      */
     private void adicionarDigito(int numero) {
 
-        inicializarNumero(size);
         switch (numero) {
             case 1:
                 num.adicionarLinea(1);
@@ -110,24 +109,23 @@ public class ImpresorLCD {
      * @param numeroImp Numero a Imprimir
      * @param espacio Espacio Entre digitos
      */    
-    private void inicializarNumero(int size) 
+    private void imprimirNumero(int size, String numeroImp, int espacio) 
     {
-        int pivotX = 0;
         char[] digitos;
-        // Calcula el numero de filas cada digito
-        int filasDig = (2 * size) + 3;
-        // Calcula el numero de columna de cada digito
-        int columDig = size + 2;
-
-        num = new NumeroLCD(size,filasDig,columDig);
-
         
 
         // crea el arreglo de digitos
         digitos = numeroImp.toCharArray();
 
-
+        // Calcula el numero de filas cada digito
+        int filasDig = (2 * size) + 3;
+        // Calcula el numero de columna de cada digito
+        int columDig = size + 2;
+        
         for (char digito : digitos) {
+       
+        num = new NumeroLCD(size,filasDig,columDig);
+
             
             //Valida que el caracter sea un digito
             if( ! Character.isDigit(digito))
@@ -137,13 +135,17 @@ public class ImpresorLCD {
             }
 
             int numero = Integer.parseInt(String.valueOf(digito));
+           
             adicionarDigito(numero);
+           
+            num.crearNum();
+           
+            num.imprimir();
             for(int i = 0; i<espacio; i++)
             {
-                System.out.println(" ");
+                System.out.print(" ");
             }
-
-            num.imprimir();
+           
         }
 
        

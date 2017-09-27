@@ -24,8 +24,8 @@ public class NumeroLCDTest {
     @Test
     public void imprimirMethod() {
         System.out.println("prueba imprimir");
-        num.addLinea(1);
-        num.addLinea(5);
+        num.adicionarLinea(1);
+        num.adicionarLinea(5);
         
         num.imprimir();
         assertTrue(true);
