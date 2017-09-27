@@ -18,31 +18,17 @@ import static org.junit.Assert.*;
  */
 public class NumeroLCDTest {
     
-    private final NumeroLCD num;
+    private NumeroLCD num;
     
-    
-    @BeforeClass
-    public static void setUpClass() {
-       this.num = new NumeroLCD();
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-        
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void imprimirMethod() {
+        System.out.println("prueba imprimir");
+        num.addLinea(1);
+        num.addLinea(5);
+        
+        num.imprimir();
+        assertTrue(true);
     }
     
 }
